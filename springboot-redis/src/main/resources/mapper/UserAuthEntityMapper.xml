@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xingjiahe.www.mapper.UserAuthEntityMapper">
+    <resultMap id="BaseResultMap" type="com.xingjiahe.www.model.UserAuthEntity">
+        <id column="guid" jdbcType="VARCHAR" property="guid"/>
+        <result column="user_guid" jdbcType="VARCHAR" property="userGuid"/>
+        <result column="user_new_id" jdbcType="INTEGER" property="userNewId"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="flag" jdbcType="BOOLEAN" property="flag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    guid, userGuid, userNewId, type, flag
+  </sql>
+    <insert id="insert" parameterType="com.xingjiahe.www.model.UserAuthEntity">
+    insert into users (guid, user_guid, user_new_id,type,flag)
+    values (#{guid,jdbcType=VARCHAR}, #{userGuid,jdbcType=VARCHAR}, #{userNewId,jdbcType=INTEGER},#{type,jdbcType=VARCHAR}, #{flag,jdbcType=BOOLEAN}
+      )
+  </insert>
+
+</mapper>
