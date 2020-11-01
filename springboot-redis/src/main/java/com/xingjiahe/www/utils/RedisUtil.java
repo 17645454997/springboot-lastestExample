@@ -1,5 +1,6 @@
 package com.xingjiahe.www.utils;
 
+import java.security.Key;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -529,6 +530,11 @@ public class RedisUtil{
             return 0;
         }
     }
+    public static boolean setExAndNx(Key redisKey, String value, Long seconds) {
+       // String set = RedisClientManagement.getInstance().set(redisKey, value, "NX", "EX", seconds);
+        return "OK".equals("set");
+    }
+
 
     public static void main(String[] args) {
 		/*JedisPool jedisPool = new JedisPool(null,"localhost",6379,100,"123456");
