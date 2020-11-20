@@ -13,6 +13,7 @@
         <module>springboot-flink</module>
         <module>springboot-redis</module>
         <module>springboot-ddd</module>
+        <module>springboot-23design</module>
     </modules>
 
 </project>
