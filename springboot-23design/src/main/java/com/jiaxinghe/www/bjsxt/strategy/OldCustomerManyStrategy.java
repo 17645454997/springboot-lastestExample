@@ -1,4 +1,4 @@
-package com.bjsxt.strategy;
+package com.jiaxinghe.www.bjsxt.strategy;
 
 public class OldCustomerManyStrategy implements Strategy {
 

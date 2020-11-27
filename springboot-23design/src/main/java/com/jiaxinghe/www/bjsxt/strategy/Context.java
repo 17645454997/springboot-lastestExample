@@ -1,4 +1,4 @@
-package com.bjsxt.strategy;
+package com.jiaxinghe.www.bjsxt.strategy;
 
 /**
  * 负责和具体的策略类交互

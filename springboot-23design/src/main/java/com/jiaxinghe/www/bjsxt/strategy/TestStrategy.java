@@ -1,4 +1,4 @@
-package com.bjsxt.strategy;
+package com.jiaxinghe.www.bjsxt.strategy;
 
 /**
  * 实现起来比较容易，符合一般开发人员的思路
