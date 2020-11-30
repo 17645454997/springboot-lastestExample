@@ -1,4 +1,4 @@
-package com.hellobike;
+package com.xingjiahe.www;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -26,9 +26,9 @@ public class TextExcute {
             //Context就是读到的json数据
             json += context;
         }
-        List<City> cityList = JSONObject.parseArray(json, City.class);
-        List<String>resultList = new ArrayList<>();
-        cityList.stream().forEach(e->resultList.add(e.getCityCode()));
+//        List<City> cityList = JSONObject.parseArray(json, City.class);
+//        List<String>resultList = new ArrayList<>();
+//        cityList.stream().forEach(e->resultList.add(e.getCityCode()));
         //  cityList.stream().forEach(e->e.cityList.stream().forEach(p->resultList.add(p.getCityCode())));
 
         String text =
@@ -311,13 +311,13 @@ public class TextExcute {
             targetList.add(iterator.next());
         }
         List<String>jsonList=new ArrayList<>();
-
-        targetList.stream().forEach(e->{
-            if(!resultList.contains(e)){
-                jsonList.add(e);
-            }
-        });
-        jsonList.stream().forEach(e -> System.out.print(e+" "));
+//
+//        targetList.stream().forEach(e->{
+//            if(!resultList.contains(e)){
+//                jsonList.add(e);
+//            }
+//        });
+//        jsonList.stream().forEach(e -> System.out.print(e+" "));
     }
 
 }

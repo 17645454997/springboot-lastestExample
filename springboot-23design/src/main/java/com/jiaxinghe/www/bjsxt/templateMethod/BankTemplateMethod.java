@@ -1,4 +1,4 @@
-package com.bjsxt.templateMethod;
+package com.jiaxinghe.www.bjsxt.templateMethod;
 
 public abstract class BankTemplateMethod {
 	//具体方法
