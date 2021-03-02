@@ -14,6 +14,9 @@
         <module>springboot-redis</module>
         <module>springboot-ddd</module>
         <module>springboot-23design</module>
+        <module>springboot-netty</module>
+        <module>springboot-elk</module>
+        <module>springboot-rocket-kafka</module>
     </modules>
 
 </project>

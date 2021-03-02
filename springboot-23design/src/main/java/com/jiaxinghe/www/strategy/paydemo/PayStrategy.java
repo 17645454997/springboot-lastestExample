@@ -12,6 +12,7 @@ public class PayStrategy {
 
     private static Map<String, Payment> payStrategy = new HashMap<String, Payment>();
 
+
     static {
         payStrategy.put(ALI_PAY, new AliPay());
         payStrategy.put(WECHAT_PAY, new WecatPay());
