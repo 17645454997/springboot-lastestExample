@@ -7,7 +7,7 @@ import java.io.IOException;
 public class CoverUtil {
     public static void main(String[] args) {
         // 飞哥提供
-        String message = "\\346\\212\\261\\346\\255\\211,\\347\\275\\221\\347\\273\\234\\345\\274\\200\\345\\260\\217\\345\\267\\256\\344\\272\\206,\\350\\257\\267\\347\\250\\215\\345\\220\\216\\351\\207\\215\\350\\257\\225\\";
+        String message = "350\\257\\245\\347\\254\\224\\350\\256\\242\\345\\215\\225\\345\\267\\262\\351\\200\\200\\346\\254\\276\\357\\274\\214\\350\\257\\267\\345\\213\\277\\351\\207\\215\\350\\257\\225";
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ByteArrayInputStream inputStream = new ByteArrayInputStream(message.getBytes());
         int read = -1;
