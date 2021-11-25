@@ -7,6 +7,9 @@ import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 //import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -17,6 +20,16 @@ import org.springframework.stereotype.Component;
 @EnableRetry
 @Component
 public class RecoryTest {
+
+      class ListNode {
+         int val;
+          ListNode next;
+          ListNode(int x) {
+              val = x;
+              next = null;
+          }
+      }
+
 
     public void test () {
         retry();
@@ -34,6 +47,24 @@ public class RecoryTest {
     public void recover (RetryException e) {
         log.info("recovery,{}",e.getMessage());
 
+    }
+
+    public boolean hasCycle(ListNode head) {
+        Set<ListNode> seen = new HashSet<ListNode>();
+        while (head != null) {
+            if (!seen.add(head)) {
+                return true;
+            }
+            head = head.next;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+     Set<Integer> seen = new HashSet<>();
+     seen.add(5);
+        boolean add = seen.add(5);
+        System.out.println(add);
     }
 }
 
