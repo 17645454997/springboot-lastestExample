@@ -10,8 +10,8 @@ import java.net.Socket;
 public class Consumer  {
     public static void main(String[] args) {
         IUserService userService = (IUserService) rpc(IUserService.class);
-        User user = userService.findById(123L);
-        System.out.println(user);
+        ProtoDemo.Student student = userService.findById(123L);
+        System.out.println(student);
     }
     public  static  Object rpc(Class clazz){
         return Proxy.newProxyInstance(

@@ -12,7 +12,7 @@ public class RpcConsumer {
 
     public static void main(String[] args) {
         IUserService userService = (IUserService) rpc(IUserService.class);
-        User user = userService.findById(123L);
+        ProtoDemo.Student user = userService.findById(123L);
         System.out.println(user);
     }
 
