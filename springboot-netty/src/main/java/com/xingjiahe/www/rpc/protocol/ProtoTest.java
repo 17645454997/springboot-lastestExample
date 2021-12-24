@@ -1,19 +1,27 @@
-package com.xingjiahe.www.rpc;
+package com.xingjiahe.www.rpc.protocol;
+
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
+import com.xingjiahe.www.rpc.protocol.ProtoDemo;
 
 import java.util.List;
 
-public class UserServiceImpl implements IUserService {
-    @Override
-    public ProtoDemo.Student findById(Long id) {
+/**
+ * <p></p>
+ *
+ * @author hejiaxing
+ * @version 1.0
+ * @date 2021/12/23 下午11:25
+ */
+public class ProtoTest {
+    public static void main(String[] args) {
         //获取Student对象
         //这里的Student对象构造器被私有化,我们通过Student的内部类Builder来构建builder
         ProtoDemo.Student.Builder builder= ProtoDemo.Student.newBuilder();
         //通过Student的内部类builder提供了构建Student相关属性的set方法
         builder.setId(1);
-        builder.setName("凌晨0点0分");
+        builder.setName("hejiaxing");
         builder.setEmail("31346337@qq.com");
         builder.setSex(ProtoDemo.Student.Sex.MAN);
         //获取PhoneNumber对象
@@ -60,6 +68,7 @@ public class UserServiceImpl implements IUserService {
         }
         System.out.println(jsonObject);
         System.out.println("json数据大小: "+jsonObject.getBytes().length);
-        return student;
     }
+
+
 }

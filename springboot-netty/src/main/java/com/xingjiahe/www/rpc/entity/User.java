@@ -1,4 +1,4 @@
-package com.xingjiahe.www.rpc;
+package com.xingjiahe.www.rpc.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

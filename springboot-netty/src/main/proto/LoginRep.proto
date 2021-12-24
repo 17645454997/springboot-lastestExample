@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.xingjiahe.www.protobuf.response";
+option java_outer_classname = "LoginResponse";
+
+message LoginRep
+{
+    //登录结果
+    int32 result = 1;
+    string msg = 2;
+}

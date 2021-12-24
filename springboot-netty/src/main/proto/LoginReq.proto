@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.xingjiahe.www.protobuf.request";
+option java_outer_classname = "LoginRequest";
+
+message LoginReq
+{
+    //登录类型
+    int32 type = 1;
+    //名字
+    string name = 2;
+    //密码
+    string pass = 3;
+}

@@ -1,26 +1,21 @@
-package com.xingjiahe.www.rpc;
-
+package com.xingjiahe.www.rpc.service.impl;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
+import com.xingjiahe.www.rpc.protocol.ProtoDemo;
+import com.xingjiahe.www.rpc.service.IUserService;
 
 import java.util.List;
 
-/**
- * <p></p>
- *
- * @author hejiaxing
- * @version 1.0
- * @date 2021/12/23 下午11:25
- */
-public class ProtoTest {
-    public static void main(String[] args) {
+public class UserServiceImpl implements IUserService {
+    @Override
+    public ProtoDemo.Student findById(Long id) {
         //获取Student对象
         //这里的Student对象构造器被私有化,我们通过Student的内部类Builder来构建builder
         ProtoDemo.Student.Builder builder= ProtoDemo.Student.newBuilder();
         //通过Student的内部类builder提供了构建Student相关属性的set方法
         builder.setId(1);
-        builder.setName("凌晨0点0分");
+        builder.setName("hejiaxing");
         builder.setEmail("31346337@qq.com");
         builder.setSex(ProtoDemo.Student.Sex.MAN);
         //获取PhoneNumber对象
@@ -41,6 +36,11 @@ public class ProtoTest {
         //这里得到了stuBte字节数组后，我们可以将该数据进行数据传输或存储，这里至于用什么技术传输就根据具体情况而定
         //假如这里stuByt通过传输，下面的代码接到了该数据
         //接收方 ,这里为了方便我们就写在一个类里面
+
+
+
+
+
         //将字节数据反序列化为对应的对象实例
         ProtoDemo.Student student=null;
         try {
@@ -67,7 +67,6 @@ public class ProtoTest {
         }
         System.out.println(jsonObject);
         System.out.println("json数据大小: "+jsonObject.getBytes().length);
+        return student;
     }
-
-
 }

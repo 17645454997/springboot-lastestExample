@@ -1,4 +1,7 @@
-package com.xingjiahe.www.rpc;
+package com.xingjiahe.www.rpc.client;
+
+import com.xingjiahe.www.rpc.service.IUserService;
+import com.xingjiahe.www.rpc.protocol.ProtoDemo;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

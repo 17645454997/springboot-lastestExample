@@ -1,4 +1,4 @@
-package com.xingjiahe.www;
+package com.xingjiahe.www.netty;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
