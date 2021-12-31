@@ -16,11 +16,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 
-/**
- * 客户端连接测试例子
- * @author sodaChen
- * @date 2019.07.06
- */
+
 public class Client {
 
     public static void main(String[] args) throws Exception {

@@ -3,7 +3,6 @@ package com.xingjiahe.www.rpc.protocol;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
-import com.xingjiahe.www.rpc.protocol.ProtoDemo;
 
 import java.util.List;
 

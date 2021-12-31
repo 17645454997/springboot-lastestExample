@@ -16,11 +16,6 @@ import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- * protocolbuf3的服务端处理
- * @author sodaChen
- * @date 2019.07.06
- */
 public class Server
 {
     public static void main(String[] args) throws Exception
