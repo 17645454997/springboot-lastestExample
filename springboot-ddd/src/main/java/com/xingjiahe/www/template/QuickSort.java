@@ -1,4 +1,4 @@
-package com.xingjiahe.www;
+package com.xingjiahe.www.template;
 
 public class QuickSort {
     public static void main(String[] args) {

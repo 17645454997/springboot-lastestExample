@@ -1,4 +1,4 @@
-package com.xingjiahe.www;
+package com.xingjiahe.www.template;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

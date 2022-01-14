@@ -1,4 +1,4 @@
-package com.xingjiahe.www;
+package com.xingjiahe.www.template;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

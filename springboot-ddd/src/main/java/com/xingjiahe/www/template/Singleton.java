@@ -1,4 +1,4 @@
-package com.xingjiahe.www;
+package com.xingjiahe.www.template;
 
 /**
  * <p>单例模式</p>
