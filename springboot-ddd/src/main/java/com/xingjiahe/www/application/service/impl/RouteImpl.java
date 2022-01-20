@@ -23,4 +23,8 @@ public class RouteImpl implements Route {
        }
        return new Result<>(0,"Error",null,null);
     }
+    public RouteMeta  getRouteMeta(RouteMeta routeMeta){
+
+        return null;
+    }
 }
