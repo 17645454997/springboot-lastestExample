@@ -1,54 +1,25 @@
-package com.xingjiahe.www.controller;
+package com.xingjiahe.www.bloom;
 
-
-import com.xingjiahe.www.mapper.UserAuthEntityMapper;
 import com.xingjiahe.www.utils.RedisTemplate;
 import com.xingjiahe.www.utils.RedisUtil;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import java.util.BitSet;
 
+
+
 /**
- * @ClassName: RedisTestController
- * @Auther: zhangyingqi
- * @Date: 2018/8/28 17:24
- * @Description:
+ * <p></p>
+ *
+ * @author hejiaxing
+ * @version 1.0
+ * @date 2022/6/23 4:09 PM
  */
-@RestController
-public class RedisTestController {
-    @Autowired
-    RedisTemplate redisTemplate;
-    @Autowired
-    RedisUtil redisUtil;
-    @Autowired
-    UserAuthEntityMapper mapper;
+@Service
+public class MyBloomFilter {
 
-    /**
-     * @auther: zhangyingqi
-     * @date: 17:26 2018/8/28
-     * @param: []
-     * @return: org.springframework.ui.ModelMap
-     * @Description: 测试redis存储&读取
-     */
-    @RequestMapping(value = "/test")
-    public String test() {
-        for (int i = 0; i < seeds.length; i++) {
-            functions[i] = new HashFunction(DEFAULT_SIZE, seeds[i]);
-        }
-        for (int i = 0; i < 100; i++) {
-            add("bloomFilter",String.valueOf(i));
-        }
-        System.out.println(contains("bloomFilter","9999"));   // true
-        String id = "12345";
-        add("bloomFilter",id);
-        System.out.println(contains("bloomFilter",id));   // true
-        System.out.println("" + contains("bloomFilter","909090909"));  //false
-
-        return "ok";
-
-    }
 
     /**
      * 一个长度为10 亿的比特位
@@ -75,10 +46,11 @@ public class RedisTestController {
      *
      * @param value 需要加入的值
      */
-    public  void add(String key,String value) {
+    public static void add(String value) {
         if (value != null) {
             for (HashFunction f : functions) {
-                redisTemplate.opsForValue().setBit(key,f.hash(value), true);
+                //计算 hash 值并修改 bitmap 中相应位置为 true
+                bitset.set(f.hash(value), true);
             }
         }
     }
@@ -88,13 +60,13 @@ public class RedisTestController {
      * @param value 需要判断的元素
      * @return 结果
      */
-    public  boolean contains(String key,String value) {
+    public static boolean contains(String value) {
         if (value == null) {
             return false;
         }
         boolean ret = true;
         for (HashFunction f : functions) {
-            ret = redisTemplate.opsForValue().getBit(key,f.hash(value));
+            ret = bitset.get(f.hash(value));
             //一个 hash 函数返回 false 则跳出循环
             if (!ret) {
                 break;
@@ -102,6 +74,31 @@ public class RedisTestController {
         }
         return ret;
     }
+
+    /**
+     * 测试
+     */
+    public static void main(String[] args) {
+
+}
+@Test
+public  void  redisSetBitTest(){
+    for (int i = 0; i < seeds.length; i++) {
+        functions[i] = new HashFunction(DEFAULT_SIZE, seeds[i]);
+    }
+
+    // 添加1亿数据
+    for (int i = 0; i < 100000000; i++) {
+        add(String.valueOf(i));
+    }
+    System.out.println(contains("99999999"));   // true
+
+    String id = "123456789";
+    add(id);
+
+    System.out.println(contains(id));   // true
+    System.out.println("" + contains("234567890"));  //false
+}
 }
 
 class HashFunction {
@@ -135,5 +132,7 @@ class HashFunction {
         return (long) (-n * Math.log(p) / (Math.log(2) * Math.log(2)));
     }
 
-}
 
+
+
+}
