@@ -5,10 +5,15 @@ import com.xingjiahe.www.mapper.UserAuthEntityMapper;
 import com.xingjiahe.www.utils.RedisTemplate;
 import com.xingjiahe.www.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.charset.StandardCharsets;
 import java.util.BitSet;
+import java.util.List;
 
 /**
  * @ClassName: RedisTestController
@@ -34,6 +39,18 @@ public class RedisTestController {
      */
     @RequestMapping(value = "/test")
     public String test() {
+
+        List <Long>list = redisTemplate.executePipelined(new RedisCallback<Object>() {
+            @Override
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                for (int i = 0; i < 100; i++) {
+                    String key = "123" + i;
+                    redisConnection.zCount(key.getBytes(StandardCharsets.UTF_8), 0, Integer.MIN_VALUE);
+                }
+                return null;
+            }
+        });
+
         for (int i = 0; i < seeds.length; i++) {
             functions[i] = new HashFunction(DEFAULT_SIZE, seeds[i]);
         }
