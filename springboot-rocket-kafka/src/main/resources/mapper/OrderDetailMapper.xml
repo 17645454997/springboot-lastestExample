@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xingjiahe.www.dao.OrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiahe.www.po.OrderDetail">
+    <id column="order_detail_id" jdbcType="INTEGER" property="orderDetailId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_cnt" jdbcType="INTEGER" property="productCnt" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="average_cost" jdbcType="DECIMAL" property="averageCost" />
+    <result column="weight" jdbcType="REAL" property="weight" />
+    <result column="fee_money" jdbcType="DECIMAL" property="feeMoney" />
+    <result column="w_id" jdbcType="INTEGER" property="wId" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_detail_id, order_id, product_id, product_name, product_cnt, product_price, 
+    average_cost, weight, fee_money, w_id, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_detail
+    where order_detail_id = #{orderDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_detail
+    where order_detail_id = #{orderDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiahe.www.po.OrderDetail">
+    insert into order_detail (order_detail_id, order_id, product_id, 
+      product_name, product_cnt, product_price, 
+      average_cost, weight, fee_money, 
+      w_id, modified_time)
+    values (#{orderDetailId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{productName,jdbcType=VARCHAR}, #{productCnt,jdbcType=INTEGER}, #{productPrice,jdbcType=DECIMAL}, 
+      #{averageCost,jdbcType=DECIMAL}, #{weight,jdbcType=REAL}, #{feeMoney,jdbcType=DECIMAL}, 
+      #{wId,jdbcType=INTEGER}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiahe.www.po.OrderDetail">
+    insert into order_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderDetailId != null">
+        order_detail_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productCnt != null">
+        product_cnt,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="averageCost != null">
+        average_cost,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="feeMoney != null">
+        fee_money,
+      </if>
+      <if test="wId != null">
+        w_id,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderDetailId != null">
+        #{orderDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCnt != null">
+        #{productCnt,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="averageCost != null">
+        #{averageCost,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=REAL},
+      </if>
+      <if test="feeMoney != null">
+        #{feeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="wId != null">
+        #{wId,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiahe.www.po.OrderDetail">
+    update order_detail
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCnt != null">
+        product_cnt = #{productCnt,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="averageCost != null">
+        average_cost = #{averageCost,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=REAL},
+      </if>
+      <if test="feeMoney != null">
+        fee_money = #{feeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="wId != null">
+        w_id = #{wId,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_detail_id = #{orderDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiahe.www.po.OrderDetail">
+    update order_detail
+    set order_id = #{orderId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_cnt = #{productCnt,jdbcType=INTEGER},
+      product_price = #{productPrice,jdbcType=DECIMAL},
+      average_cost = #{averageCost,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=REAL},
+      fee_money = #{feeMoney,jdbcType=DECIMAL},
+      w_id = #{wId,jdbcType=INTEGER},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where order_detail_id = #{orderDetailId,jdbcType=INTEGER}
+  </update>
+</mapper>

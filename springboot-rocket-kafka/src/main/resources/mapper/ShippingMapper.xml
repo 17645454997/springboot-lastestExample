@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xingjiahe.www.dao.ShippingMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiahe.www.po.Shipping">
+    <id column="ship_id" jdbcType="TINYINT" property="shipId" />
+    <result column="ship_name" jdbcType="VARCHAR" property="shipName" />
+    <result column="ship_contact" jdbcType="VARCHAR" property="shipContact" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ship_id, ship_name, ship_contact, telphone, price, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shipping_info
+    where ship_id = #{shipId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from shipping_info
+    where ship_id = #{shipId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiahe.www.po.Shipping">
+    insert into shipping_info (ship_id, ship_name, ship_contact, 
+      telphone, price, modified_time
+      )
+    values (#{shipId,jdbcType=TINYINT}, #{shipName,jdbcType=VARCHAR}, #{shipContact,jdbcType=VARCHAR}, 
+      #{telphone,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{modifiedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiahe.www.po.Shipping">
+    insert into shipping_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shipId != null">
+        ship_id,
+      </if>
+      <if test="shipName != null">
+        ship_name,
+      </if>
+      <if test="shipContact != null">
+        ship_contact,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shipId != null">
+        #{shipId,jdbcType=TINYINT},
+      </if>
+      <if test="shipName != null">
+        #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="shipContact != null">
+        #{shipContact,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiahe.www.po.Shipping">
+    update shipping_info
+    <set>
+      <if test="shipName != null">
+        ship_name = #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="shipContact != null">
+        ship_contact = #{shipContact,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ship_id = #{shipId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiahe.www.po.Shipping">
+    update shipping_info
+    set ship_name = #{shipName,jdbcType=VARCHAR},
+      ship_contact = #{shipContact,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where ship_id = #{shipId,jdbcType=TINYINT}
+  </update>
+</mapper>

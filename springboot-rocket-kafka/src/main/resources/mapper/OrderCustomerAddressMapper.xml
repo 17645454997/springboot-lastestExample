@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xingjiahe.www.dao.OrderCustomerAddressMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiahe.www.po.OrderCustomerAddress">
+    <id column="customer_addr_id" jdbcType="INTEGER" property="customerAddrId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="zip" jdbcType="INTEGER" property="zip" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="district" jdbcType="INTEGER" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="is_default" jdbcType="TINYINT" property="isDefault" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_addr_id, customer_id, zip, province, city, district, address, is_default, 
+    modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_customer_addr
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_customer_addr
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiahe.www.po.OrderCustomerAddress">
+    insert into order_customer_addr (customer_addr_id, customer_id, zip, 
+      province, city, district, 
+      address, is_default, modified_time
+      )
+    values (#{customerAddrId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{zip,jdbcType=INTEGER}, 
+      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, #{district,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{isDefault,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiahe.www.po.OrderCustomerAddress">
+    insert into order_customer_addr
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerAddrId != null">
+        customer_addr_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="zip != null">
+        zip,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerAddrId != null">
+        #{customerAddrId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="zip != null">
+        #{zip,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiahe.www.po.OrderCustomerAddress">
+    update order_customer_addr
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="zip != null">
+        zip = #{zip,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiahe.www.po.OrderCustomerAddress">
+    update order_customer_addr
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      zip = #{zip,jdbcType=INTEGER},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xingjiahe.www.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiahe.www.po.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_sn" jdbcType="BIGINT" property="orderSn" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="shipping_user" jdbcType="VARCHAR" property="shippingUser" />
+    <result column="province" jdbcType="SMALLINT" property="province" />
+    <result column="city" jdbcType="SMALLINT" property="city" />
+    <result column="district" jdbcType="SMALLINT" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="payment_method" jdbcType="TINYINT" property="paymentMethod" />
+    <result column="order_money" jdbcType="DECIMAL" property="orderMoney" />
+    <result column="district_money" jdbcType="DECIMAL" property="districtMoney" />
+    <result column="shipping_money" jdbcType="DECIMAL" property="shippingMoney" />
+    <result column="payment_money" jdbcType="DECIMAL" property="paymentMoney" />
+    <result column="shipping_comp_name" jdbcType="VARCHAR" property="shippingCompName" />
+    <result column="shipping_sn" jdbcType="VARCHAR" property="shippingSn" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="shipping_time" jdbcType="TIMESTAMP" property="shippingTime" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
+    <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+    <result column="order_point" jdbcType="INTEGER" property="orderPoint" />
+    <result column="invoice_title" jdbcType="VARCHAR" property="invoiceTitle" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_sn, customer_id, shipping_user, province, city, district, address, 
+    payment_method, order_money, district_money, shipping_money, payment_money, shipping_comp_name, 
+    shipping_sn, create_time, shipping_time, pay_time, receive_time, order_status, order_point, 
+    invoice_title, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_master
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_master
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiahe.www.po.Order">
+    insert into order_master (order_id, order_sn, customer_id, 
+      shipping_user, province, city, 
+      district, address, payment_method, 
+      order_money, district_money, shipping_money, 
+      payment_money, shipping_comp_name, shipping_sn, 
+      create_time, shipping_time, pay_time, 
+      receive_time, order_status, order_point, 
+      invoice_title, modified_time)
+    values (#{orderId,jdbcType=INTEGER}, #{orderSn,jdbcType=BIGINT}, #{customerId,jdbcType=INTEGER}, 
+      #{shippingUser,jdbcType=VARCHAR}, #{province,jdbcType=SMALLINT}, #{city,jdbcType=SMALLINT}, 
+      #{district,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}, #{paymentMethod,jdbcType=TINYINT}, 
+      #{orderMoney,jdbcType=DECIMAL}, #{districtMoney,jdbcType=DECIMAL}, #{shippingMoney,jdbcType=DECIMAL}, 
+      #{paymentMoney,jdbcType=DECIMAL}, #{shippingCompName,jdbcType=VARCHAR}, #{shippingSn,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{shippingTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{receiveTime,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=TINYINT}, #{orderPoint,jdbcType=INTEGER}, 
+      #{invoiceTitle,jdbcType=VARCHAR}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiahe.www.po.Order">
+    insert into order_master
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="shippingUser != null">
+        shipping_user,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="paymentMethod != null">
+        payment_method,
+      </if>
+      <if test="orderMoney != null">
+        order_money,
+      </if>
+      <if test="districtMoney != null">
+        district_money,
+      </if>
+      <if test="shippingMoney != null">
+        shipping_money,
+      </if>
+      <if test="paymentMoney != null">
+        payment_money,
+      </if>
+      <if test="shippingCompName != null">
+        shipping_comp_name,
+      </if>
+      <if test="shippingSn != null">
+        shipping_sn,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="shippingTime != null">
+        shipping_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="receiveTime != null">
+        receive_time,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderPoint != null">
+        order_point,
+      </if>
+      <if test="invoiceTitle != null">
+        invoice_title,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=BIGINT},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="shippingUser != null">
+        #{shippingUser,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=SMALLINT},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=SMALLINT},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=SMALLINT},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null">
+        #{paymentMethod,jdbcType=TINYINT},
+      </if>
+      <if test="orderMoney != null">
+        #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="districtMoney != null">
+        #{districtMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingMoney != null">
+        #{shippingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentMoney != null">
+        #{paymentMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingCompName != null">
+        #{shippingCompName,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingSn != null">
+        #{shippingSn,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shippingTime != null">
+        #{shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="orderPoint != null">
+        #{orderPoint,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceTitle != null">
+        #{invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiahe.www.po.Order">
+    update order_master
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=BIGINT},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="shippingUser != null">
+        shipping_user = #{shippingUser,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=SMALLINT},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=SMALLINT},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=SMALLINT},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null">
+        payment_method = #{paymentMethod,jdbcType=TINYINT},
+      </if>
+      <if test="orderMoney != null">
+        order_money = #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="districtMoney != null">
+        district_money = #{districtMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingMoney != null">
+        shipping_money = #{shippingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentMoney != null">
+        payment_money = #{paymentMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingCompName != null">
+        shipping_comp_name = #{shippingCompName,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingSn != null">
+        shipping_sn = #{shippingSn,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shippingTime != null">
+        shipping_time = #{shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="orderPoint != null">
+        order_point = #{orderPoint,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceTitle != null">
+        invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiahe.www.po.Order">
+    update order_master
+    set order_sn = #{orderSn,jdbcType=BIGINT},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      shipping_user = #{shippingUser,jdbcType=VARCHAR},
+      province = #{province,jdbcType=SMALLINT},
+      city = #{city,jdbcType=SMALLINT},
+      district = #{district,jdbcType=SMALLINT},
+      address = #{address,jdbcType=VARCHAR},
+      payment_method = #{paymentMethod,jdbcType=TINYINT},
+      order_money = #{orderMoney,jdbcType=DECIMAL},
+      district_money = #{districtMoney,jdbcType=DECIMAL},
+      shipping_money = #{shippingMoney,jdbcType=DECIMAL},
+      payment_money = #{paymentMoney,jdbcType=DECIMAL},
+      shipping_comp_name = #{shippingCompName,jdbcType=VARCHAR},
+      shipping_sn = #{shippingSn,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      shipping_time = #{shippingTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      order_point = #{orderPoint,jdbcType=INTEGER},
+      invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

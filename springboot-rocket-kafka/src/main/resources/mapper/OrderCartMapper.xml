@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xingjiahe.www.dao.OrderCartMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiahe.www.po.OrderCart">
+    <id column="cart_id" jdbcType="INTEGER" property="cartId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_amount" jdbcType="INTEGER" property="productAmount" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cart_id, customer_id, product_id, product_amount, price, add_time, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_cart
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_cart
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiahe.www.po.OrderCart">
+    insert into order_cart (cart_id, customer_id, product_id, 
+      product_amount, price, add_time, 
+      modified_time)
+    values (#{cartId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{productAmount,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiahe.www.po.OrderCart">
+    insert into order_cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartId != null">
+        cart_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productAmount != null">
+        product_amount,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartId != null">
+        #{cartId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiahe.www.po.OrderCart">
+    update order_cart
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        product_amount = #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiahe.www.po.OrderCart">
+    update order_cart
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
+      product_amount = #{productAmount,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </update>
+</mapper>
