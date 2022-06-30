@@ -1,4 +1,4 @@
-package com.xingjiahe.www;
+package com.xingjiahe.www.test;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
