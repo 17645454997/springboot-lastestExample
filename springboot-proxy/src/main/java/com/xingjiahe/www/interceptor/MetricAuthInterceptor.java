@@ -37,7 +37,7 @@ public class MetricAuthInterceptor {
         try {
             return joinPoint.proceed();
         } catch (Exception e) {
-            log.error("invoke method = {} exception = {}", method, JSON.toJSONString(e));
+            //log.error("invoke method = {} exception = {}", method, JSON.toJSONString(e));
             if (null != e && (e.getCause() instanceof ResourceAccessException || e.getCause() instanceof SocketTimeoutException)) {
           //      MetricLogUtils.toInterfaceRecordMetric(DateUtils.dataSourceFormatStr(), userNewId, serviceType, method);
             }

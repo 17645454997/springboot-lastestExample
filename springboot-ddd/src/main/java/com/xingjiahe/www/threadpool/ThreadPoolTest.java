@@ -1,6 +1,6 @@
 package com.xingjiahe.www.threadpool;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -21,8 +21,12 @@ public class ThreadPoolTest {
       }finally {
           mainLock.unlock();
       }
+        ThreadPoolExecutor threadPoolExecutor   = new ThreadPoolExecutor(10,10,0L,TimeUnit.MILLISECONDS,new ArrayBlockingQueue<>(10));
 
 
+        threadPoolExecutor.execute(()->{
+            System.out.println("Hi 线程池");
+        });
     }
 
 
