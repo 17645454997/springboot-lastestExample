@@ -26,14 +26,17 @@ public class QuickSort {
                while (left<right && arr[right]>=key){
                    right--;
                }
-               arr[left] = arr[right];
                while (left<right && arr[left]<=key){
                    left++;
                }
-               arr[right] = arr[left];
-               arr[left] = key;
-               quickSort(arr,left-1,leftIndex);
-               quickSort(arr,right+1,rightIndex);
+               int temp = arr[left];
+               arr[left] = arr[right];
+               arr[right] = temp;
            }
+            int temp = arr[left];
+           arr[left] = arr [leftIndex];
+           arr[leftIndex] =temp;
+           quickSort(arr,left-1,leftIndex);
+           quickSort(arr,right+1,rightIndex);
        }
 }

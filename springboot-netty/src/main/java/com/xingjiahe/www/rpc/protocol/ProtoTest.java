@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2021/12/23 下午11:25
  */
 public class ProtoTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         //获取Student对象
         //这里的Student对象构造器被私有化,我们通过Student的内部类Builder来构建builder
         ProtoDemo.Student.Builder builder= ProtoDemo.Student.newBuilder();
@@ -36,6 +36,11 @@ public class ProtoTest {
         //序列化
         ProtoDemo.Student stu=builder.build();
         System.out.println("protobuf数据大小: " + stu.toByteString().size());
+        byte[] compress = ZlibUtil.compress(stu.toByteArray(), true);
+        System.out.println("protobuf压缩后的数据为:"+compress.length);
+        for (byte b:compress){
+            System.out.println(b);
+        }
         //再将封装有数据的对象实例，转换为字节数组，用于数据传输、存储等
         byte[] stuByte = stu.toByteArray();
         //这里得到了stuBte字节数组后，我们可以将该数据进行数据传输或存储，这里至于用什么技术传输就根据具体情况而定

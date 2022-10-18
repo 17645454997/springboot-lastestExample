@@ -8,11 +8,7 @@ package com.xingjiahe.www.template;
  * @date 2022/2/15 上午11:36
  */
 public class BinarySearch {
-    public static void main(String[] args) {
-        int [] arr = {4,5,7,7,7,7,0,1,2};
-        System.out.println(search(arr,9,0));
-        System.out.println(binarySearchV2(arr,7));
-    }
+
     public static   int search(int [] arr,int n,int target){
         int begin = 0;
         int end = n-1;
@@ -87,5 +83,29 @@ public class BinarySearch {
             }
         }
         return  -1;
+    }
+
+
+    public  static  int binarySearchV3(int [] nums){
+        if(nums.length == 0 )return  0;
+        int right = nums.length-1;
+        int  left = 0;
+        while(left<right){
+            int mid = (left+right)/2;
+            if(nums[right]<nums[mid]){
+                left = mid+1;
+            }else if(nums[mid] == nums[right]){
+                right--;
+            }else{
+                right = mid;
+            }
+        }
+        return  nums[left];
+    }
+    public static void main(String[] args) {
+        int [] arr = {4,5,7,7,7,7,0,1,2};
+//        System.out.println(search(arr,9,0));
+//        System.out.println(binarySearchV2(arr,7));
+        System.out.println(binarySearchV3(arr));
     }
 }

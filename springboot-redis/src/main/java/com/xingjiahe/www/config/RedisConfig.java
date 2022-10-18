@@ -98,7 +98,7 @@ public class RedisConfig {
      */
     @Bean
     public RedisTemplate functionDomainRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        log.info("RedisTemplate实例化成功！");
+//        log.info("RedisTemplate实例化成功！");
         RedisTemplate redisTemplate = new RedisTemplate();
         initDomainRedisTemplate(redisTemplate, redisConnectionFactory);
         return redisTemplate;
@@ -143,7 +143,7 @@ public class RedisConfig {
      */
     @Bean(name = "redisUtil")
     public RedisUtil redisUtil(RedisTemplate redisTemplate) {
-        log.info("RedisUtil注入成功！");
+//        log.info("RedisUtil注入成功！");
         RedisUtil redisUtil = new RedisUtil();
         redisUtil.setRedisTemplate(redisTemplate);
         return redisUtil;
