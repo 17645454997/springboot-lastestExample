@@ -14,6 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ThreadPoolTest {
     public static void main(String[] args) throws Exception {
+        RejectedExecutionHandler  handler =  new ThreadPoolExecutor.AbortPolicy();
       final  ReentrantLock mainLock =  new ReentrantLock();
       mainLock.lock();
       try {
@@ -27,9 +28,10 @@ public class ThreadPoolTest {
         threadPoolExecutor.execute(()->{
             System.out.println("Hi 线程池");
         });
-        ExecutorService executor = new ThreadPoolExecutor(10,10,0L,TimeUnit.MILLISECONDS,new ArrayBlockingQueue<>(10));
+        ExecutorService executor = new ThreadPoolExecutor(10,10,0L,TimeUnit.MILLISECONDS,new ArrayBlockingQueue<>(10),handler);
        try {
-           executor.execute(ThreadPoolTest::printThread);
+           executor.submit(ThreadPoolTest::printThread);
+           executor.shutdown();
        }catch (Exception e){
            LogUtils.COMMON.warn("print  Thread  error:{}","");
        }finally {

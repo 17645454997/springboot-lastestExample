@@ -5,10 +5,9 @@ import org.apache.lucene.util.RamUsageEstimator;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 /**
  * <p></p>
@@ -100,28 +99,43 @@ public class BizBitTest {
         }
 
         public static void main(String[] args) {
-            byte b = 0x35; // 0011 0101
-            byte d = hexStrTobyte("35");
-            // 输出 [0, 0, 1, 1, 0, 1, 0, 1]
-            Map<Integer, BitSet> map=new HashMap<>();
-            map.computeIfAbsent(135, k -> new BitSet()).set(66789098);
-            BitSet bitSet =  new BitSet();
-
-            System.setProperty("java.vm.name","Java HotSpot(TM) ");
+//            byte b = 0x35; // 0011 0101
+//            byte d = hexStrTobyte("35");
+//            // 输出 [0, 0, 1, 1, 0, 1, 0, 1]
+//            Map<Integer, BitSet> map=new HashMap<>();
+//            map.computeIfAbsent(135, k -> new BitSet()).set(66789098);
+//            BitSet bitSet =  new BitSet();
+//
+//            System.setProperty("java.vm.name","Java HotSpot(TM) ");
 //            System.out.println(ObjectSizeCalculator.getObjectSize(32131231123L));
 //            System.out.println(RamUsageEstimator.sizeOf(HEX));
 //            System.out.println(RamUsageEstimator.sizeOf(b));
-            int a = 1;
-            long c = 1L;
+//            int a = 1;
+//            long c = 1L;
+//
+//            byte[] ret= new byte[2];
+//            byte  h=(byte) 1;
+//            boolean aq =  true;
+//            String  tt = "sada";
+//            // 1 bytes = 8 bit;     1bit 存数据
+//            System.out.println(RamUsageEstimator.sizeOf(aq));
+//            System.out.println(tt.getBytes().length);
 
-            byte[] ret= new byte[2];
-            byte  h=(byte) 1;
-            boolean aq =  true;
-            String  tt = "sada";
-            // 1 bytes = 8 bit;     1bit 存数据
-            System.out.println(RamUsageEstimator.sizeOf(aq));
-            System.out.println(tt.getBytes().length);
-
+            BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(50000);
+            for(int i=0;i<50000;i++){
+                workQueue.add(()->{
+                    try {
+                        List<Integer> list  =  new ArrayList<>(10000);
+                        for (int j=0;j<10000;j++){
+                            list.add((j));
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                });
+            }
+            System.out.println(workQueue.size());
+            System.out.println( RamUsageEstimator.sizeOf(workQueue));
 
        }
 
