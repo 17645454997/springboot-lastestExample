@@ -35,6 +35,7 @@ public class ChainPatternDemo {
                 currentHandler.setNextHandler(nextHandler);
             }
         }
+        exec(new Request(),new Response());
     }
 
     public  Response exec(Request request, Response response){
