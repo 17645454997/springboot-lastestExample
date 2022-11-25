@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id = "statusMachineManager"  class="com.xingjiahe.www.workflow.StatusMachineManager">
+       <property name="statusMachineMap">
+           <map>
+               <entry key ="GOUP"   value-ref="commonStatusMachine" />
+               <entry key = "YANGYANG"  value-ref="yangGuangStatusMachine"/>
+           </map>
+       </property>
+    </bean>
+
+    <bean id = "commonStatusMachine" class="com.xingjiahe.www.workflow.JourneyStatusMachine">
+      <property name="statusSettingMap">
+          <map>
+              <entry key="PENDING">
+                  <list>
+                      <value>WAIT_RECEIVING</value>
+                      <value>CANCELED</value>
+                  </list>
+              </entry>
+              <entry key="WAIT_TO_BUYER_CONFIRM">
+                  <list>
+                      <value>ACCEPTED</value>
+                      <value>CANCELED</value>
+                  </list>
+              </entry>
+          </map>
+      </property>
+    </bean>
+
+    <bean id = "yangGuangStatusMachine" class="com.xingjiahe.www.workflow.JourneyStatusMachine">
+        <property name="statusSettingMap">
+            <map>
+                <entry key="PENDING">
+                    <list>
+                        <value>WAIT_RECEIVING</value>
+                        <value>CANCELED</value>
+                    </list>
+                </entry>
+                <entry key="WAIT_TO_BUYER_CONFIRM">
+                    <list>
+                        <value>ACCEPTED</value>
+                        <value>CANCELED</value>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>
