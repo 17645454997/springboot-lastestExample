@@ -1,5 +1,6 @@
 package com.jiaxinghe.www.strategy.factory;
 
+
 import org.springframework.stereotype.Component;
 
 /**

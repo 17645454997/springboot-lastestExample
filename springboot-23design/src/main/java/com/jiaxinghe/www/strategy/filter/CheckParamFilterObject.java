@@ -16,6 +16,6 @@ public class CheckParamFilterObject  extends  AbstractHandler {
 
     @Override
     public void doFilter(Request request, Response response) {
-        System.out.println("非空检查");
+        System.out.println("非空检查2");
     }
 }

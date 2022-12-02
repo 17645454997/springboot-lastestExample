@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
  * @date 2022/11/23 11:39 AM
  */
 @Component
-@Order(4)
+@Order(1)
 public class CheckRuleFilterObject extends  AbstractHandler{
 
     @Override
      public  void doFilter(Request request, Response response) {
-        System.out.println("check rule");
+        System.out.println("check rule3");
     }
 }

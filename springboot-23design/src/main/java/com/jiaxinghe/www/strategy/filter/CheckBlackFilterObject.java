@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
  * @date 2022/11/23 11:38 AM
  */
 @Component
-@Order(3)
+@Order(1)
 public class CheckBlackFilterObject extends  AbstractHandler{
 
     @Override
     public void doFilter(Request request, Response response) {
-        System.out.println("校验黑名单");
+        System.out.println("校验黑名单1");
     }
 }

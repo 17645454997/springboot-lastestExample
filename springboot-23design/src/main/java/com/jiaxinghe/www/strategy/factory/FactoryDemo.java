@@ -3,6 +3,9 @@ package com.jiaxinghe.www.strategy.factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.List;
+
 /**
  * <p></p>
  *
@@ -14,16 +17,14 @@ import org.springframework.stereotype.Component;
 public class FactoryDemo {
 
     @Autowired
-    IFileResolveFactory fileResolveFactory;
+    List<IFileResolveFactory> fileResolveFactory;
+
+     public  FactoryDemo () {
+
+     }
+
 
      public  void  factoryCreate(FileResolveEnum fileResolveEnum){
-         switch (fileResolveEnum){
-             case BFILE:
-                 fileResolveFactory = new BFileResolve();
-                 break;
-             default:
-                 fileResolveFactory = new AFileReslove();
-         }
-         fileResolveFactory.resolve();
+
      }
 }

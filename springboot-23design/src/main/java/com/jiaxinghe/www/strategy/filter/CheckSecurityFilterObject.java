@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
  * @date 2022/11/23 11:37 AM
  */
 @Component
-@Order(2)
+@Order(1)
 public class CheckSecurityFilterObject extends  AbstractHandler{
 
     @Override
    public void doFilter(Request request, Response response) {
-        System.out.println("安全调用校验");
+        System.out.println("安全调用校验4");
     }
 
 }
