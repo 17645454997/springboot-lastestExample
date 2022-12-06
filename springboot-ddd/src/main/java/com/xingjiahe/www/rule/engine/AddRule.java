@@ -16,9 +16,10 @@ public class AddRule implements  Rule{
     public boolean evaluate(Expression expression) {
         boolean evaResult = false;
         if(expression.getOperator() == Operator.ADD){
-
+            int i = expression.getX() + expression.getY();
+            evaResult = true;
         }
-        return false;
+        return evaResult;
     }
 
     @Override
