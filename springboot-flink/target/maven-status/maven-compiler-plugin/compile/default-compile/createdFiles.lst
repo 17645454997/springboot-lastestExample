@@ -1,0 +1,3 @@
+com/xingjiahe/www/flink/app/SocketTextStreamWordCount.class
+com/xingjiahe/www/flink/app/SocketTextStreamWordCount$LineSplitter.class
+com/xingjiahe/www/flink/SpringbootFlinkApplication.class
