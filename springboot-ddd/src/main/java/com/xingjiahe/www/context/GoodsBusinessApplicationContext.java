@@ -2,7 +2,6 @@ package com.xingjiahe.www.context;
 
 
 import com.sun.istack.internal.NotNull;
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
@@ -25,7 +24,7 @@ public class GoodsBusinessApplicationContext implements ApplicationContextAware 
     private static ApplicationContext applicationContext;
 
     @Override
-    public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NotNull ApplicationContext applicationContext) {
         GoodsBusinessApplicationContext.applicationContext = applicationContext;
     }
 
